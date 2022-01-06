@@ -1,5 +1,6 @@
 package com.example.to_do.navigation
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
@@ -9,6 +10,7 @@ import com.example.to_do.navigation.destinations.taskComposable
 import com.example.to_do.ui.viewmodels.SharedViewModel
 import com.example.to_do.util.Constant.LIST_SCREEN
 
+@ExperimentalMaterialApi
 @Composable
 fun SetupNavigation(
     navController:NavHostController,
@@ -24,6 +26,7 @@ val screen = remember(navController){
         listComposable(navigateToTaskScreen = screen.task,
             sharedViewModel = sharedViewModel
         )
-        taskComposable(navigateToListScreen = screen.list)
+        taskComposable(sharedViewModel=sharedViewModel,
+            navigateToListScreen = screen.list)
     }
 }
